@@ -70,37 +70,42 @@ const OneToMany = () => {
     ];
 
     return (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Box sx={{ height: 250, width: '30%', boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", background: "#FFF" }}>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    rowCount={totalCount}
-                    pageSizeOptions={[2]}
-                    paginationModel={paginationModel}
-                    paginationMode="server"
-                    onPaginationModelChange={handlePaginationModelChange}
-                    onRowClick={(params) => handleRowClick(params.id as number)}
-                />
-            </Box>
-            <Modal
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="keep-mounted-modal-title"
-                aria-describedby="keep-mounted-modal-description"
-            >
-                <Box sx={style}>
-                    {userOrders.length > 0 ? userOrders.map((order: Order) => (
-                        <Typography id="keep-mounted-modal-title" variant="h6" component="h2" >
-                            Price: {order.price}{" "}
-                            Status: {order.status}{" "}
-                            Ordered on: {new Date(order.created_at).toLocaleDateString()}{"\n"}
-                        </Typography>
-                    )) : "No Orders"}
+        <>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <Box sx={{ height: 250, width: '30%', boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", background: "#FFF" }}>
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        rowCount={totalCount}
+                        pageSizeOptions={[2]}
+                        paginationModel={paginationModel}
+                        paginationMode="server"
+                        onPaginationModelChange={handlePaginationModelChange}
+                        onRowClick={(params) => handleRowClick(params.id as number)}
+                    />
                 </Box>
-            </Modal>
-        </div >
+                <Modal
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="keep-mounted-modal-title"
+                    aria-describedby="keep-mounted-modal-description"
+                >
+                    <Box sx={style}>
+                        {userOrders.length > 0 ? userOrders.map((order: Order) => (
+                            <Typography id="keep-mounted-modal-title" variant="h6" component="h2" >
+                                Price: {order.price}{" "}
+                                Status: {order.status}{" "}
+                                Ordered on: {new Date(order.created_at).toLocaleDateString()}{"\n"}
+                            </Typography>
+                        )) : "No Orders"}
+                    </Box>
+                </Modal>
+            </div >
+            <h4 style={{ textAlign: "justify", margin: "2rem", lineHeight: "30px" }}>
+                In the database schema, there is a one-to-many relationship between the "User" and "Order" entities. This implies that a single user can have multiple orders, while each order is associated with only one user. This relationship enables users to place multiple orders within the system, and each order can be traced back to a specific user. It allows for efficient organization and retrieval of order data based on the user who initiated the purchase. This one-to-many relationship is commonly used in e-commerce platforms or any system where users can place multiple orders over time.
+            </h4>
+        </>
     )
 }
 

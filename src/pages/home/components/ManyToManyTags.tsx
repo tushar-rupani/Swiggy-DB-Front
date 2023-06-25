@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import { manyToManyTag } from '../requests/association.service';
+import { RestaurantTag, Rows, Tag } from '../model/many-to-many.model';
 const ManyToManyTag = () => {
     const [tagData, setTagData] = useState([]);
-    const [rows, setRows] = useState<any>([]);
+    const [rows, setRows] = useState<Rows[]>([]);
     const [totalCount, setTotalCount] = useState(0);
     const [paginationModel, setPaginationModel] = useState({
         page: 0,
@@ -29,8 +30,8 @@ const ManyToManyTag = () => {
         console.log(tagData);
 
         if (tagData && tagData.length > 0) {
-            const newRows = tagData.map((tag: any) => {
-                const restaurants = tag.Restaurants.map((restaurant: any) => {
+            const newRows = tagData.map((tag: Tag) => {
+                const restaurants = tag.Restaurants.map((restaurant: RestaurantTag) => {
                     return restaurant.name
                 })
                 return {

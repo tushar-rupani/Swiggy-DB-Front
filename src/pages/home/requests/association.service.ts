@@ -59,3 +59,27 @@ export const manyToManyTag = async(data:any) => {
         console.log("Something went wrong", err); 
     }
 }
+
+export const oneToManyPolymorphic = async(data:any) => {
+    try{
+        const response = await axiosGet(`/polymorphic`, data)
+        if(response.status === 200){
+            return response.data;
+        }
+        return;
+    }catch(err){
+        console.log("Something went wrong", err); 
+    }
+}
+
+export const manyToManyPolymorphic = async(data:any) => {
+    try{
+        const response = await axiosGet(`/many-to-many-polymorphic`, data)
+        if(response.status === 200){
+            return response.data;
+        }
+        return;
+    }catch(err){
+        console.log("Something went wrong", err); 
+    }
+}

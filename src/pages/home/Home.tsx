@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import OneToOne from './components/OneToOne'
 import OneToMany from './components/OneToMany';
 import ManyToMany from './components/ManyToMany';
+import OneToManyPolymorphic from './components/OneToManyPolymorphic';
+import ManyToManyPolymorphic from './components/ManyToManyPolymorphic';
 
 interface CurrentProps {
     key: string;
@@ -27,6 +29,9 @@ const Home = () => {
             case "4":
                 configForCurrent = { key: "4", title: "Polymorphic Relationship" }
                 break;
+            case "5":
+                configForCurrent = { key: "5", title: "Many to Many Polymorphic Relationship" }
+                break;
             default:
                 configForCurrent = { key: "1", title: "One to One Relationship" }
                 break;
@@ -42,10 +47,11 @@ const Home = () => {
                     <option value="2">One to Many</option>
                     <option value="3">Many to Many</option>
                     <option value="4">Polymorphic</option>
+                    <option value="5">Many to Many Polymorphic</option>
                 </select>
             </div>
             <h2 style={{ textAlign: "center" }}>{current.title}</h2>
-            {current.key === "1" ? <OneToOne /> : current.key === "2" ? <OneToMany /> : current.key === "3" ? <ManyToMany /> : current.key === "4" ? "Polymorphic" : ""}
+            {current.key === "1" ? <OneToOne /> : current.key === "2" ? <OneToMany /> : current.key === "3" ? <ManyToMany /> : current.key === "4" ? <OneToManyPolymorphic /> : current.key === "5" ? <ManyToManyPolymorphic /> : ""}
 
         </>
 
