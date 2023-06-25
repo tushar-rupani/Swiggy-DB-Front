@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import OneToOne from './components/OneToOne'
+import OneToMany from './components/OneToMany';
+import ManyToMany from './components/ManyToMany';
 
-interface ChangeProps {
+interface CurrentProps {
     key: string;
     title: string
 }
 const Home = () => {
-    const [current, setCurrent] = useState<ChangeProps>({
+    const [current, setCurrent] = useState<CurrentProps>({
         key: "1",
         title: "One to One Relationship"
     })
@@ -26,7 +28,7 @@ const Home = () => {
                 configForCurrent = { key: "4", title: "Polymorphic Relationship" }
                 break;
             default:
-                configForCurrent = { key: "4", title: "Polymorphic Relationship" }
+                configForCurrent = { key: "1", title: "One to One Relationship" }
                 break;
 
         }
@@ -43,7 +45,7 @@ const Home = () => {
                 </select>
             </div>
             <h2 style={{ textAlign: "center" }}>{current.title}</h2>
-            {current.key === "1" ? <OneToOne /> : current.key === "2" ? "One to Many" : current.key === "3" ? "Many to Many" : current.key === "4" ? "Polymorphic" : ""}
+            {current.key === "1" ? <OneToOne /> : current.key === "2" ? <OneToMany /> : current.key === "3" ? <ManyToMany /> : current.key === "4" ? "Polymorphic" : ""}
 
         </>
 

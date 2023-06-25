@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import { getOneToOne } from '../requests/association.service';
 import { OneToOneRowData, Order } from '../model/one-to-one.model';
+
 const OneToOne = () => {
     const [orderData, setOrderData] = useState([]);
     const [rows, setRows] = useState<OneToOneRowData[]>([]);
@@ -49,7 +50,7 @@ const OneToOne = () => {
 
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Box sx={{ height: 250, width: '40%' }}>
+            <Box sx={{ height: 250, width: '40%', boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", background: "#FFF" }}>
                 <DataGrid
                     rows={rows}
                     columns={columns}
